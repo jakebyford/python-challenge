@@ -51,7 +51,7 @@ li_per = round(int(total_li)/int(total_votes), 2)
 otooley_per = round(int(total_otooley)/int(total_votes), 2)
      
 #Print Header
-print("Election Results")
+  print("Election Results")
 print("------------------")
 
 #Counts the total amount of months
@@ -86,7 +86,7 @@ with open(output_file, "w") as datafile:
     writer.writerow(["Khan: "+"{:.2%}".format(khan_per) + " " + "(" + str(total_khan) + ")"])
     writer.writerow(["Correy: "+"{:.2%}".format(correy_per) + " " + "(" + str(total_correy) + ")"])
     writer.writerow(["Li: "+"{:.2%}".format(li_per) + " " + "(" + str(total_li) + ")"])
-    writer.writerow(["Li: "+"{:.2%}".format(otooley_per) + " " + "(" + str(total_otooley) + ")"])
+    writer.writerow(["O'Tooley: "+"{:.2%}".format(otooley_per) + " " + "(" + str(total_otooley) + ")"])
     writer.writerow(["-------------------"])
     writer.writerow(["Winner: Khan"])
     writer.writerow(["-------------------"])

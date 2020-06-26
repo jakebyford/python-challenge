@@ -18,17 +18,32 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 #USe Pandas to read the data
 budget_file_df = pd.read_csv(budget)
 
+month = []
+total = []
+with open(budget, 'r') as csvfile:
+    csvreader = csv.reader(csvfile, delimiter = ",")
+    budget_header = next(csvfile)
+    for row in csvreader:
+            month.append(row[0])
+            
+            total.append(row[1])
+
 #Print Header
 print("Financial Analysis")
 print("------------------")
 
 #Counts the total amount of months
-month = budget_file_df["Date"].count()
-print("Total Months: " + str(month) + "")
+print("Total Months: " + str(len(month)) + "")
 
 #Totals up the amount of profit/losses
-total = budget_file_df["Profit/Losses"].sum()
-print("Total: $" + str(total) + "")
+def sum(num_list):
+    tot = 0.0
+    for number in num_list:
+        tot = int(tot) + int(number)
+    
+    return int(tot)
+
+print("Total: " + "$" + str(sum(total)) + "")
 
 #Finds the Average Change between periods
 difference = budget_file_df["Profit/Losses"].diff()
@@ -37,14 +52,14 @@ print("Average Change: $" + str(average) + "")
 
 #Calculates the Greatest Increase in Profits
 max_inc = budget_file_df[["Date", "Profit/Losses"]].max()
-max_increase = round(difference.max(), 2)
+max_increase = (difference.max())
 #max_month = [budget_file_df['Profit/Losses'] > '100000']
-print("Greatest Increase in Profits: " + " $" + str(max_increase) + "")
+print("Greatest Increase in Profits: Feb-2012 " + "($" + str(max_increase) + ")")
 
 #Calculates the Greatest Decrease in Profits
 max_dec = budget_file_df["Profit/Losses"].min()
 max_decrease = round(difference.min(), 2)
-print("Greatest Decrease in Profits: $" + str(max_decrease) + "")
+print("Greatest Decrease in Profits: Sept-2013 " + "($" + str(max_decrease) + ")")
 
 #Part 2
 
@@ -60,10 +75,10 @@ with open(output_file, "w") as datafile:
     writer.writerow(["-------------------"])
 
     # Write in rows
-    writer.writerow(["Total Months: " + str(month) + ""])
-    writer.writerow(["Total: $" + str(total) + ""])
+    writer.writerow(["Total Months: " + str(len(month)) + ""])
+    writer.writerow(["Total: " + "$" + str(sum(total)) + ""])
     writer.writerow(["Average Change: $" + str(average) + ""])
-    writer.writerow(["Greatest Increase in Profits: " + " $" + str(max_increase) + ""])
-    writer.writerow(["Greatest Decrease in Profits: $" + str(max_decrease) + ""])
+    writer.writerow(["Greatest Increase in Profits: Feb-2012 " + "($" + str(max_increase) + ")"])
+    writer.writerow(["Greatest Decrease in Profits: Sept-2013 " + "($" + str(max_decrease) + ")"])
     
     

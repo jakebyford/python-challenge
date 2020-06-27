@@ -64,21 +64,21 @@ print("Greatest Decrease in Profits: Sept-2013 " + "($" + str(max_decrease) + ")
 #Part 2
 
 # Set variable for output file
-output_file = os.path.join(".", "analysis","budget.csv")
+output_file = os.path.join(".", "analysis","budget.txt")
 
 #  Opens and writes the file budget.csv
-with open(output_file, "w") as datafile:
-    writer = csv.writer(datafile)
+with open(output_file, "w") as text:
+    #writer = csv.writer(datafile)
 
     # Write the header row
-    writer.writerow(["Financial Analysis"])
-    writer.writerow(["-------------------"])
+    text.write("Financial Analysis\n")
+    text.write("-------------------\n")
 
     # Write in rows
-    writer.writerow(["Total Months: " + str(len(month)) + ""])
-    writer.writerow(["Total: " + "$" + str(sum(total)) + ""])
-    writer.writerow(["Average Change: $" + str(average) + ""])
-    writer.writerow(["Greatest Increase in Profits: Feb-2012 " + "($" + str(max_increase) + ")"])
-    writer.writerow(["Greatest Decrease in Profits: Sept-2013 " + "($" + str(max_decrease) + ")"])
+    text.write("Total Months: " + str(len(month)) + "" "\n")
+    text.write("Total: $ " + str(sum(total)) + "" "\n")
+    text.write("Average Change: " + "$" + str(average) + "" "\n")
+    text.write("Greatest Increase in Profits: Feb-2012 " + "($" + str(max_increase) + ")""\n")
+    text.write("Greatest Decrease in Profits: Sept-2013 " + "($" + str(max_decrease) + ")""\n")
     
     

@@ -51,7 +51,7 @@ li_per = round(int(total_li)/int(total_votes), 2)
 otooley_per = round(int(total_otooley)/int(total_votes), 2)
      
 #Print Header
-  print("Election Results")
+print("Election Results")
 print("------------------")
 
 #Counts the total amount of months
@@ -70,24 +70,24 @@ print("Winner: Khan")
 print("-------------------")
 
 #Part 2
-output_file = os.path.join(".", "analysis","election.csv")
+output_file = os.path.join(".", "analysis","election.txt")
 
 #  Opens and writes the file budget.csv
-with open(output_file, "w") as datafile:
-    writer = csv.writer(datafile)
+with open(output_file, "w") as text:
+    #writer = csv.writer(datafile)
 
     # Write the header row
-    writer.writerow(["Election Results"])
-    writer.writerow(["-------------------"])
+    text.write("Election Results" "\n")
+    text.write("-------------------" "\n")
 
     # Write in rows
-    writer.writerow(["Total Votes: " + str(vtes) + ""])
-    writer.writerow(["-------------------"])
-    writer.writerow(["Khan: "+"{:.2%}".format(khan_per) + " " + "(" + str(total_khan) + ")"])
-    writer.writerow(["Correy: "+"{:.2%}".format(correy_per) + " " + "(" + str(total_correy) + ")"])
-    writer.writerow(["Li: "+"{:.2%}".format(li_per) + " " + "(" + str(total_li) + ")"])
-    writer.writerow(["O'Tooley: "+"{:.2%}".format(otooley_per) + " " + "(" + str(total_otooley) + ")"])
-    writer.writerow(["-------------------"])
-    writer.writerow(["Winner: Khan"])
-    writer.writerow(["-------------------"])
+    text.write("Total Votes: " + str(vtes) + "" "\n")
+    text.write("-------------------" "\n")
+    text.write("Khan: "+"{:.2%}".format(khan_per) + " " + "(" + str(total_khan) + ")" "\n")
+    text.write("Correy: "+"{:.2%}".format(correy_per) + " " + "(" + str(total_correy) + ")" "\n")
+    text.write("Li: "+"{:.2%}".format(li_per) + " " + "(" + str(total_li) + ")" "\n")
+    text.write("O'Tooley: "+"{:.2%}".format(otooley_per) + " " + "(" + str(total_otooley) + ")" "\n")
+    text.write("-------------------" "\n")
+    text.write("Winner: Khan" "\n")
+    text.write("-------------------" "\n")
     
